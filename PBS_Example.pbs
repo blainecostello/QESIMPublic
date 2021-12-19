@@ -1,0 +1,16 @@
+# QESIM Example [Nano Copper Fillers in PVC]
+#PBS -N Example_1
+#PBS -l nodes=1:ppn=2
+#PBS -l pmem=8gb
+#PBS -l walltime=1:00:00
+#PBS -q inferno
+#PBS -j oe
+#PBS -t 1-5
+
+cd $PBS_O_WORKDIR
+module purge
+module load matlab/r2020b
+
+# This line is a comment because there is a space after the hash
+matlab -r 'QESIM_Exp(40, $PBS_ARRAYID, 0.15, 17E-9, [2.8, 1], [5.37E-10, 5.87E2], 300*(2*pi), 777)'
+
